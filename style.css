@@ -1,0 +1,27 @@
+.app {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 50px;
+    margin: 0 auto;
+}
+
+.anyClassName {
+    padding: 20px;
+    border: 2px solid gray;
+    margin: 10px;
+}
+.anyClassName > ul {
+    display: none;
+}
+.anyClassName._active > ul {
+    display: block;
+}
+.anyClassName._green {
+    outline: 2px solid green;
+}
+.anyClassName._blue {
+    outline: 2px solid blue;
+}
