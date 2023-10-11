@@ -1,4 +1,9 @@
-class BlockModificatorManager {
+/**
+ * Modificator
+ * manager
+ */
+
+class ModificatorManager {
     constructor(block, mod) {
         this.className.block = block
         this.className.mod = mod
@@ -27,14 +32,18 @@ class BlockModificatorManager {
         return e?.target?.closest(`.${this.className.block}`)
     }
 
-    addMod = (e, element) => {
-        const el = e ? this.getClosestBlock(e) : element
+    addMod = (e, elem) => {
+        const el = e ? this.getClosestBlock(e) : elem
         el?.classList?.add(this.className.mod)
     }
 
-    removeMod = (e, element) => {
-        const el = e ? this.getClosestBlock(e) : element
+    removeMod = (e, elem) => {
+        const el = e ? this.getClosestBlock(e) : elem
         el?.classList?.remove(this.className.mod)
+    }
+
+    toggleByScrollTop = (el, distance = 100) => {
+        document.documentElement.scrollTop > distance ? this.addMod(null, el) : this.removeMod(null, el)
     }
 
     manageMod = (e) => {
@@ -53,17 +62,24 @@ class BlockModificatorManager {
 }
 
 // Active 1
-const ActiveManager = new BlockModificatorManager('--manage-active', '_active')
+const ActiveManager = new ModificatorManager('--manage-active', '_active')
 window.addEventListener('click', ActiveManager.manageMod, {passive: true})
 
 // Active 2
-const ActiveManager2 = new BlockModificatorManager('--manage-active-2', '_active')
+const ActiveManager2 = new ModificatorManager('--manage-active-2', '_active')
 window.addEventListener('click', ActiveManager2.manageMod, {passive: true})
 
 // Green
-const GreenManager = new BlockModificatorManager('--manage-green', '_green')
+const GreenManager = new ModificatorManager('--manage-green', '_green')
 window.addEventListener('click', GreenManager.manageMod, {passive: true})
 
 // Blue
-const BlueManager = new BlockModificatorManager('--manage-blue', '_blue')
+const BlueManager = new ModificatorManager('--manage-blue', '_blue')
 window.addEventListener('click', BlueManager.manageMod, {passive: true})
+
+// Scrolled
+const ScrolledManager = new ModificatorManager('--manage-scrolled', '_scrolled')
+const fixedBlock = document.querySelector('.fixed');
+window.addEventListener('scroll', () => {
+    ScrolledManager.toggleByScrollTop(fixedBlock, 10)
+}, {passive: true})

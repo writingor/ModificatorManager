@@ -25,3 +25,16 @@
 .anyClassName._blue {
     outline: 2px solid blue;
 }
+
+.fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    width: 200px;
+}
+
+.fixed._scrolled {
+    background-color: black;
+    color: white;
+}
