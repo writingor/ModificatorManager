@@ -2,7 +2,7 @@
  * Modificator
  * manager
  * 
- * v 1.0.1
+ * v 1.0.2
  * 
  * Code
  * https://github.com/writingor/ModificatorManager
@@ -48,6 +48,11 @@ class ModificatorManager {
     removeMod = (e, elem) => {
         const el = e ? this.getClosestBlock(e) : elem
         el?.classList?.remove(this.className.mod)
+    }
+
+    toggleMod = (e, elem) => {
+        const el = e ? this.getClosestBlock(e) : elem
+        el?.classList?.toggle(this.className.mod)
     }
 
     toggleByScrollTop = (el, distance = 100) => {
