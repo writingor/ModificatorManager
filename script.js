@@ -3,6 +3,12 @@
  * manager
  * 
  * v 1.0.1
+ * 
+ * Code
+ * https://github.com/writingor/ModificatorManager
+ * 
+ * Example
+ * https://writingor.github.io/ModificatorManager/
  */
 
 class ModificatorManager {
