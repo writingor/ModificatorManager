@@ -38,3 +38,7 @@
     background-color: black;
     color: white;
 }
+
+._hidden {
+    display: none !important;
+}

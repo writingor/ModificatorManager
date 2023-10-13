@@ -59,6 +59,20 @@ class ModificatorManager {
         document.documentElement.scrollTop > distance ? this.addMod(null, el) : this.removeMod(null, el)
     }
 
+    toggleSibling = (e, elem, pos = 'next') => {
+        const el = e ? this.getClosestBlock(e) : elem
+        const sibling = pos === 'next' ? el?.nextElementSibling : el?.previousElementSibling
+        sibling?.classList?.toggle(this.className.mod)
+    }
+
+    togglePrevSibling = (e, elem) => {
+        this.toggleSibling(e, elem, 'prev');
+    }
+
+    toggleNextSibling = (e, elem) => {
+        this.toggleSibling(e, elem, 'next');
+    }
+
     manageMod = (e) => {
         const el = this.getClosestBlock(e)
         const mark = this.setMark(el, this.className.block, this.className.mod)
@@ -96,3 +110,7 @@ const fixedBlock = document.querySelector('.fixed');
 window.addEventListener('scroll', () => {
     ScrolledManager.toggleByScrollTop(fixedBlock, 10)
 }, {passive: true})
+
+// Toggle Next
+const NextHiddenManager = new ModificatorManager('--manage-next-hidden', '_hidden')
+window.addEventListener('click', NextHiddenManager.toggleNextSibling, {passive: true})
